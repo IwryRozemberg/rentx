@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.3",
   "info": {
-    "title": "RentalX Documentation",
+    "title": "RentX Documentation",
     "description": "This is an API Rent",
     "version": "1.0.0",
     "contact": {
@@ -121,21 +121,36 @@
         "description": "Import file and create a new category. Não é permitido criar duas categorias com o mesmo nome.",
         "requestBody": {
           "content": {
-            "multipart/form": {
+            "multipart/form-data": {
               "schema": {
                 "type": "object",
                 "properties": {
-                  "name": {
-                    "type": "string"
-                  },
-                  "description": {
-                    "type": "string"
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
                   }
-                },
-                "example": {
-                  "name": "Category name sample",
-                  "description": "Category description sample"
                 }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }      
+    },
+    "/specifications": {
+      "post": {
+        "tags": ["Specification"],
+        "summary": "Create a new specification",
+        "description": "Create a new specification, não é permitido criar duas especificações com o mesmo nome.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                  "$ref": "#/definitions/Specification"
               }
             },
             "required": ["name", "description"] 
@@ -147,34 +162,74 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "id": {
-                        "type": "string"
-                      },
-                      "name": {
-                        "type": "string"
-                      },
-                      "description": {
-                        "type": "string"
-                      },
-                      "createdAt": {
-                        "type": "string",
-                        "format": "date-time"
-                      }
-                    }
-                  }                  
+                  "$ref": "#/definitions/SpecificationCreated"           
                 }
               }
             }
           },
           "500": {
-            "description": "Category already exists"
+            "description": "Specification already exists"
           }
         }
-      }      
+      },
+      "get": {
+        "tags": ["Specification"],
+        "summary": "Get all specifications",
+        "description": "List all specifications",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/SpecificationCreated"
+                  }  
+                }
+              }
+            }
+          }
+        }
+      }
+    }  
+  },
+  "definitions": {
+    "Specification": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      },
+      "example": {
+        "name": "Specification name sample",
+        "description": "Specification description sample"
+      }
+    },
+    "SpecificationCreated": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "52b115c6-d5d0-416a-8668-fce7877571b7"
+        },
+        "name": {
+          "type": "string",
+          "example": "Specification name sample"
+        },
+        "description": {
+          "type": "string",
+          "example": "Specification description sample"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
     }
   }
 }
