@@ -1,0 +1,180 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "RentalX Documentation",
+    "description": "This is an API Rent",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Suporte ClickMenos",
+      "email": "suporte@clickmenos.com.br"
+    },
+    "server": {
+      "url": "http://localhost:4000",
+      "description": "Developer Server"
+    }
+  },
+  "paths": {
+    "/categories": {
+      "post": {
+        "tags": ["Category"],
+        "summary": "Create a new category",
+        "description": "Create a new category, não é permitido criar duas categorias com o mesmo nome.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "name": "Category name sample",
+                  "description": "Category description sample"
+                }
+              }
+            },
+            "required": ["name", "description"] 
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                      }
+                    }
+                  }                  
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Category already exists"
+          }
+        }
+      },
+      "get": {
+        "tags": ["Category"],
+        "summary": "Get all categories",
+        "description": "List all categories",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "example": "d8a9f5e8-77c0-4e6c-a16a-c79669831fbf"
+                      },
+                      "name": {
+                        "type": "string",
+                        "example": "Category name"
+                      },
+                      "description": {
+                        "type": "string",
+                        "example" : "Category description"
+                      },
+                      "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                      }
+                    }
+                  }  
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/files/cars/categories": {
+      "post": {
+        "tags": ["Category"],
+        "summary": "Import one or many categories",
+        "description": "Import file and create a new category. Não é permitido criar duas categorias com o mesmo nome.",
+        "requestBody": {
+          "content": {
+            "multipart/form": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "name": "Category name sample",
+                  "description": "Category description sample"
+                }
+              }
+            },
+            "required": ["name", "description"] 
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                      }
+                    }
+                  }                  
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Category already exists"
+          }
+        }
+      }      
+    }
+  }
+}
