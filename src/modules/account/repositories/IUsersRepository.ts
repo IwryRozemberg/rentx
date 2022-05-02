@@ -1,0 +1,15 @@
+import { User } from "../model/User";
+
+export type CreateUserDTO = {
+  name: string;
+  email: string;
+  password: string;
+  driverLicense: string;
+};
+
+interface IUsersRepository {
+  create(user: CreateUserDTO): Promise<User>;
+  findByEmail(email: string): Promise<User>;
+}
+
+export { IUsersRepository };

@@ -4,7 +4,7 @@ import swaggerUi from "swagger-ui-express";
 
 import "./database";
 import "./shared/container";
-import { routes } from "./routes/index.routes";
+import { routes } from "./routes";
 import swaggerDocument from "./swagger.json";
 
 dotenv.config();

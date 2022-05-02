@@ -10,6 +10,7 @@
     "typeorm-mrevert": "ts-node-dev ./node_modules/typeorm/cli migration:revert -d \"./src/database/index.ts\""
   },
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "csv-parse": "^5.0.4",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
@@ -22,6 +23,7 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
     "@types/express": "^4.17.13",
     "@types/multer": "^1.4.7",
     "@types/node": "^17.0.25",
