@@ -10,6 +10,7 @@ export type CreateUserDTO = {
 interface IUsersRepository {
   create(user: CreateUserDTO): Promise<User>;
   findByEmail(email: string): Promise<User>;
+  findById(id: string): Promise<User>;
 }
 
 export { IUsersRepository };

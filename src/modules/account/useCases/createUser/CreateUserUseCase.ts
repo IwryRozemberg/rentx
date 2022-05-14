@@ -19,12 +19,11 @@ export class CreateUserUseCase {
     password,
     driverLicense,
   }: CreateUserDTO): Promise<User> {
-    const { email: emailAlreadyExists } =
-      await this.usersRepository.findByEmail(email);
+    const userAlreadyExists = await this.usersRepository.findByEmail(email);
 
-    if (emailAlreadyExists) {
+    if (userAlreadyExists) {
       throw new Error(
-        `this e-mail ${emailAlreadyExists} already exists another user`,
+        `this e-mail ${userAlreadyExists.email} already exists another user`,
       );
     }
 

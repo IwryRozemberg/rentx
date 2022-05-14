@@ -16,7 +16,7 @@ class CreateCategoryController {
 
       return response.status(201).json(newCategory);
     } catch (err) {
-      return response.status(400).json(err.message);
+      return response.status(err.status).json(err.message);
     }
   }
 }
