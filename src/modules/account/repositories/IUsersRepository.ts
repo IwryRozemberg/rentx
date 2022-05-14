@@ -5,6 +5,8 @@ export type CreateUserDTO = {
   email: string;
   password: string;
   driverLicense: string;
+  avatar?: string;
+  id?: string;
 };
 
 interface IUsersRepository {

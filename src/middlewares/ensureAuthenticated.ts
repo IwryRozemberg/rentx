@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { verify } from "jsonwebtoken";
 
-import { AppError } from "../erros/AppError";
+import { AppError } from "../errors/AppError";
 import { UsersRepository } from "../modules/account/repositories/implementations/UsersRepository";
 
 export async function ensureAuthenticated(
@@ -26,7 +26,7 @@ export async function ensureAuthenticated(
 
     const userRepository = new UsersRepository();
     const user = await userRepository.findById(user_id.toString());
-    console.log(user);
+    request.userId = user.id;
     if (!user) {
       throw new AppError("User invalid", 401);
     }

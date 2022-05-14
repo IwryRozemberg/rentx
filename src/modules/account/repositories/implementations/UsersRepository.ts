@@ -16,6 +16,8 @@ export class UsersRepository implements IUsersRepository {
     email,
     password,
     driverLicense,
+    avatar,
+    id,
   }: CreateUserDTO): Promise<User> {
     const passwordHash = await hash(password, 8);
 
@@ -24,6 +26,8 @@ export class UsersRepository implements IUsersRepository {
       email,
       password: passwordHash,
       driverLicense,
+      avatar,
+      id,
     });
 
     await this.repository.save(user);

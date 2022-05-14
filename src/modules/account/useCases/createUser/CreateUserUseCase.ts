@@ -1,5 +1,6 @@
 import { inject, injectable } from "tsyringe";
 
+import { AppError } from "../../../../errors/AppError";
 import { User } from "../../model/User";
 import {
   CreateUserDTO,
@@ -22,7 +23,7 @@ export class CreateUserUseCase {
     const userAlreadyExists = await this.usersRepository.findByEmail(email);
 
     if (userAlreadyExists) {
-      throw new Error(
+      throw new AppError(
         `this e-mail ${userAlreadyExists.email} already exists another user`,
       );
     }
