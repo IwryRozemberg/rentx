@@ -1,3 +1,4 @@
+import { hash } from "bcrypt";
 import { inject, injectable } from "tsyringe";
 
 import { AppError } from "../../../../errors/AppError";
@@ -28,10 +29,12 @@ export class CreateUserUseCase {
       );
     }
 
+    const passwordHash = await hash(password, 8);
+
     const user = await this.usersRepository.create({
       name,
       email,
-      password,
+      password: passwordHash,
       driverLicense,
     });
 
