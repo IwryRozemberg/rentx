@@ -30,7 +30,7 @@ export class AuthenticateUserUseCase {
     password,
   }: AuthenticateRequest): Promise<AuthenticateResponse> {
     const user = await this.usersRepository.findByEmail(email);
-
+    console.log(user);
     if (!user) {
       throw new AppError("Email or password incorrect");
     }

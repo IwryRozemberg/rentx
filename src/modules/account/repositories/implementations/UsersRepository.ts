@@ -1,4 +1,3 @@
-import { hash } from "bcrypt";
 import { getRepository, Repository } from "typeorm";
 
 import { User } from "../../model/User";
@@ -19,12 +18,10 @@ export class UsersRepository implements IUsersRepository {
     avatar,
     id,
   }: CreateUserDTO): Promise<User> {
-    const passwordHash = await hash(password, 8);
-
     const user = this.repository.create({
       name,
       email,
-      password: passwordHash,
+      password,
       driverLicense,
       avatar,
       id,
