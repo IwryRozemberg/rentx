@@ -1,8 +1,9 @@
 import { Router } from "express";
 
+import CreateCategoryController from "@modules/cars/useCases/createCategory/CreateCategoryController";
+import { ListCategoriesController } from "@modules/cars/useCases/listCategories/ListCategoriesController";
+
 import { ensureAuthenticated } from "../../middlewares/ensureAuthenticated";
-import CreateCategoryController from "../../modules/cars/useCases/createCategory/CreateCategoryController";
-import { ListCategoriesController } from "../../modules/cars/useCases/listCategories/ListCategoriesController";
 
 const categoriesRoutes = Router();
 const createCategoryController = new CreateCategoryController();

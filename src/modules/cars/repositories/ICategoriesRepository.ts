@@ -1,4 +1,4 @@
-import { Category } from "../model/Category";
+import { Category } from "../infra/typeorm/entities/Category";
 
 type CategoryDTO = {
   name: string;

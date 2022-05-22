@@ -1,4 +1,4 @@
-import { Category } from "../../model/Category";
+import { Category } from "../../infra/typeorm/entities/Category";
 import { CategoryDTO, ICategoriesRepository } from "../ICategoriesRepository";
 
 export class InMemoryCategoryRepository implements ICategoriesRepository {

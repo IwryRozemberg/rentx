@@ -5,8 +5,8 @@
   "username": "postgres",
   "password": "lk22642",
   "database": "rentx", 
-  "migrations": ["./src/database/migrations/*.ts"],
-  "entities": ["./src/modules/**/model/*.ts"],
+  "migrations": ["./shared/infra/typeorm/migrations/*.ts"],
+  "entities": ["./src/modules/**/infra/typeorm/entities/*.ts"],
   "cli": {
     "migrationsDir": "./src/database/migrations"
   }

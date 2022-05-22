@@ -1,10 +1,11 @@
 import { Router } from "express";
 import multer from "multer";
 
-import uploadConfig from "../../config/upload";
+import uploadConfig from "@config/upload";
+import { UpdateUserAvatarController } from "@modules/account/useCases/updateUserAvatar/UpdateUserAvatarController";
+import { ImportCategoryController } from "@modules/cars/useCases/importCategory/ImportCategoryController";
+
 import { ensureAuthenticated } from "../../middlewares/ensureAuthenticated";
-import { UpdateUserAvatarController } from "../../modules/account/useCases/updateUserAvatar/UpdateUserAvatarController";
-import { ImportCategoryController } from "../../modules/cars/useCases/importCategory/ImportCategoryController";
 
 const filesRoutes = Router();
 const defaultUpload = multer(uploadConfig());

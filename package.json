@@ -1,10 +1,10 @@
 {
-  "name": "rentalx",
-  "version": "1.0.0",
+  "name": "rentlx",
+  "version": "1.1.1",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "tsnd -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules/ --respawn --poll src/server.ts",
+    "dev": "tsnd -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules/ --respawn --poll src/shared/infra/http/server.ts",
     "typeorm": "tsnd  -r tsconfig-paths/register ./node_modules/typeorm/cli",
     "typeorm-mrun": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli migration:run -d \"./src/database/index.ts\"",
     "typeorm-mrevert": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli migration:revert -d \"./src/database/index.ts\"",
