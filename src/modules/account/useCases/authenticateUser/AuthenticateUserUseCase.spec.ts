@@ -1,7 +1,8 @@
 import dotenv from "dotenv";
 
-import { AppError } from "../../../../errors/AppError";
-import { InMemoryUsersRepository } from "../../repositories/fakes/InMemoryUsersRepository";
+import { AppError } from "@errors/AppError";
+import { InMemoryUsersRepository } from "@modules/account/repositories/fakes/InMemoryUsersRepository";
+
 import { CreateUserUseCase } from "../createUser/CreateUserUseCase";
 import { AuthenticateUserUseCase } from "./AuthenticateUserUseCase";
 

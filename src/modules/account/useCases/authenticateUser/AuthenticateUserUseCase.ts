@@ -2,8 +2,8 @@ import { compare } from "bcrypt";
 import { sign } from "jsonwebtoken";
 import { inject, injectable } from "tsyringe";
 
-import { AppError } from "../../../../errors/AppError";
-import { IUsersRepository } from "../../repositories/IUsersRepository";
+import { AppError } from "@errors/AppError";
+import { IUsersRepository } from "@modules/account/repositories/IUsersRepository";
 
 type AuthenticateRequest = {
   email: string;
@@ -30,7 +30,7 @@ export class AuthenticateUserUseCase {
     password,
   }: AuthenticateRequest): Promise<AuthenticateResponse> {
     const user = await this.usersRepository.findByEmail(email);
-    console.log(user);
+
     if (!user) {
       throw new AppError("Email or password incorrect");
     }
