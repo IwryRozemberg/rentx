@@ -8,7 +8,8 @@
     "typeorm": "tsnd  -r tsconfig-paths/register ./node_modules/typeorm/cli",
     "typeorm-mrun": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli migration:run -d \"./src/database/index.ts\"",
     "typeorm-mrevert": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli migration:revert -d \"./src/database/index.ts\"",
-    "test": "jest"
+    "test": "jest",
+    "seed:admin": "tsnd src/shared/infra/typeorm/seed/admin.ts"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",

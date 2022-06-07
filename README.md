@@ -11,9 +11,15 @@
 
 **RN**
   - Não deve ser possível cadastrar um novo carro com uma placa já existente;
-  - Não deve ser possível alterar a placa de um carro já cadastrado;
   - Um novo carro deve ser cadastrado, por padrão, com o status disponível;
   - Somente um usuário administrador deve conseguir cadastrar um novo carro;
+
+## Update
+**RF**
+  - Deve ser possível alterar um novo;
+
+**RN**
+  - Não deve ser possível alterar a placa de um carro já cadastrado;
   - Somente um usuário administrador deve conseguir alterar um novo carro;
 
 ## Listagem
