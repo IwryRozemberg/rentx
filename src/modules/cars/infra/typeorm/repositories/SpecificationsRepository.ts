@@ -34,4 +34,11 @@ export class SpecificationsRepository implements ISpecificationsRepository {
     const specifications = await this.repository.find();
     return specifications;
   }
+
+  async findByIds(idList: string[]): Promise<Specification[]> {
+    // const cars = await this.repository.find({ where: { id: idList } });
+    const cars = await this.repository.findByIds(idList);
+
+    return cars;
+  }
 }

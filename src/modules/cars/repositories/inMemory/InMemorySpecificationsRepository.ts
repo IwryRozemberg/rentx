@@ -26,4 +26,8 @@ export class InMemorySpecificationsRepository
   async list(): Promise<Specification[]> {
     return this.specifications;
   }
+
+  async findByIds(idList: string[]): Promise<Specification[]> {
+    return this.specifications.filter(spec => idList.includes(spec.id));
+  }
 }
