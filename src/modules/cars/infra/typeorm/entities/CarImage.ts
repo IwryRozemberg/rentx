@@ -2,29 +2,31 @@ import {
   Column,
   CreateDateColumn,
   Entity,
-  OneToMany,
+  JoinColumn,
+  ManyToOne,
   PrimaryColumn,
 } from "typeorm";
 import { v4 as uuidV4 } from "uuid";
 
 import { Car } from "./Car";
 
-@Entity("categories")
-export class Category {
+@Entity("cars_image")
+export class CarImage {
   @PrimaryColumn()
-  id?: string;
+  id: string;
 
-  @Column()
-  name: string;
+  @Column({ name: "car_id" })
+  carId: string;
 
-  @Column()
-  description: string;
+  @Column({ name: "image_name" })
+  imageName: string;
 
   @CreateDateColumn({ name: "created_at" })
   createdAt: Date;
 
-  @OneToMany(() => Car, car => car.category)
-  cars: Car[];
+  @ManyToOne(() => Car)
+  @JoinColumn({ name: "car_id" })
+  car: Car;
 
   constructor() {
     if (!this.id) {

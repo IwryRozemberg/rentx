@@ -24,7 +24,7 @@ export class UpdateUserAvatarUseCase {
     await this.usersRepository.create(user);
 
     if (oldAvatar) {
-      deleteFile(`./tmp/avatar/${oldAvatar}`);
+      deleteFile(`./tmp/${oldAvatar}`);
     }
   }
 }
